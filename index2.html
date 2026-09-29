@@ -1,0 +1,419 @@
+index2.html
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inicio - Misión Trabajo CCS</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            color: #333;
+            background: url('https://gbvm.knoios.com/mmedia/19661/esfera-de-soto-caracas-venezuela-13560.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: -1;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: "Times New Roman", Times, serif;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand.visible {
+            opacity: 1;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .burger-menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            color: white;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 70vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 3.5rem;
+            margin: 0 auto 3rem auto;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .text-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+        }
+
+        .animated-message {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.5rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInLeft 1.5s ease-in-out;
+            line-height: 1.8;
+            text-align: center;
+            font-style: italic;
+            color: #333;
+            border-left: 5px solid #2c3e50;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .mission-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .mission-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            animation: fadeIn 1.5s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        /* Sección del proyecto */
+        .project-description {
+            margin-top: 3rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem 3rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            font-family: "Times New Roman", Times, serif;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        .project-description h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .project-description h3 {
+            color: #2c3e50;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+        }
+
+        .project-description ol {
+            padding-left: 1.5rem;
+            margin-top: 0;
+            color: #444;
+        }
+
+        .project-description ol li {
+            margin-bottom: 0.6rem;
+        }
+
+        .timeline-item h4 {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(44, 62, 80, 0.95);
+                padding: 1rem 0;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger-menu {
+                display: block;
+            }
+
+            .main-title {
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .animated-message {
+                padding: 1.5rem;
+                font-size: 1.2rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .mission-card {
+                min-width: 100%;
+            }
+
+            .project-description {
+                padding: 1.5rem 1rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://img.freepik.com/vector-premium/logotipo-lujo-sf_786241-5.jpg" alt="Logo SF" style="width:100%; height:auto; object-fit: contain;">
+        </div>
+        <div class="nav-brand">Mision Trabajo CCS</div>
+        <ul class="nav-links">
+            <li><a href="index2.html">Inicio</a></li>
+            <li><a href="index3.html">Servicios</a></li>
+            <li><a href="index4.html">Contacto</a></li>
+        </ul>
+        <div class="burger-menu">☰</div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="main-content">
+        <h1 class="main-title" id="main-title">Bienvenidos a Misión Trabajo CCS</h1>
+        
+        <div class="content-wrapper">
+            <div class="text-container">
+                <div class="animated-message">
+                    "Transformando vidas a través del trabajo digno y la inclusión social"
+                </div>
+                
+                <div class="mission-cards">
+                    <div class="mission-card">
+                        <h3>Nuestra Misión</h3>
+                        <p>Brindar oportunidades laborales y herramientas para la reinserción social de personas en situación de calle, creando puentes entre las necesidades sociales y las capacidades del sector productivo.</p>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <h3>Nuestra Visión</h3>
+                        <p>Ser el programa líder en Venezuela para la integración socio-laboral de poblaciones vulnerables, replicando nuestro modelo en otras ciudades del país.</p>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <h3>Nuestros Valores</h3>
+                        <p>Dignidad humana, solidaridad, trabajo en equipo, transparencia y compromiso social. Creemos en el potencial transformador del trabajo digno.</p>
+                    </div>
+                </div>
+
+                <!-- Nueva sección sobre el proyecto -->
+                <div class="project-description">
+                    <h2>Nuestro Proyecto Integral</h2>
+                    <p>Misión Trabajo CCS es una iniciativa de desarrollo social que busca abordar de manera integral el problema de la mendicidad y la situación de calle en Caracas, combinando asistencia inmediata con soluciones estructurales a mediano y largo plazo.</p>
+                    
+                    <h3>Plan Estratégico 2025-2032</h3>
+                    <p>Nuestro modelo se basa en tres pilares fundamentales:</p>
+                    <ol>
+                        <li><strong>Primera Fase (Años 1-2):</strong> Establecimiento de centros de atención integral en zonas estratégicas de Caracas, con capacidad para brindar alimentación, atención médica básica y evaluación psicosocial.</li>
+                        <li><strong>Segunda Fase (Años 2-4):</strong> Implementación de programas de capacitación laboral adaptados a las necesidades del mercado y vinculación con empresas aliadas.</li>
+                        <li><strong>Tercera Fase (Años 4-5):</strong> Desarrollo de unidades productivas autogestionadas y expansión del modelo a otras ciudades principales del país.</li>
+                    </ol>
+                    
+                    <div class="timeline">
+                        <h3>Cronograma de Implementación</h3>
+                        <div class="timeline-item">
+                            <h4>2025/26 - Fase Inicial</h4>
+                            <p>Establecimiento del primer centro piloto en el municipio Libertador. Capacitación del equipo base y alianzas con primeros socios estratégicos.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2028-2029 - Expansión</h4>
+                            <p>Apertura de 3 centros adicionales en Caracas. Implementación del programa de formación laboral con 10 especialidades técnicas.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2030-2032 - Consolidación</h4>
+                            <p>Creación de la red de empresas aliadas (meta: 100+ empresas). Inicio de la réplica del modelo en Valencia y Maracaibo.</p>
+                        </div>
+                    </div>
+                    
+                    <p>Este plan quinquenal representa nuestro compromiso con una solución sostenible. Para 2032, proyectamos haber reintegrado a más de 2,000 personas al mercado laboral formal y haber reducido significativamente los índices de mendicidad en nuestras zonas de intervención.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Menú hamburguesa para móviles
+        document.querySelector('.burger-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Cierra el menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Control del título en la barra de navegación
+        const navBrand = document.querySelector('.nav-brand');
+        const mainTitle = document.getElementById('main-title');
+        
+        window.addEventListener('scroll', () => {
+            const titlePosition = mainTitle.getBoundingClientRect().top;
+            
+            if (titlePosition < 0) {
+                navBrand.classList.add('visible');
+            } else {
+                navBrand.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

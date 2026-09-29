@@ -1,0 +1,247 @@
+index4.html
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto - Misión Trabajo CCS</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            color: #333;
+            background: url('https://cloudfront-us-east-1.images.arcpublishing.com/bloomberglinea/L4HTR26ZYQX4JYS5CISXZVXWEA.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            padding-top: 80px;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: -1;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-family: "Times New Roman", Times, serif;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+        .nav-brand.visible {
+            opacity: 1;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin-left: auto;
+        }
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            color: #3498db;
+        }
+        .burger-menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            color: white;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            font-family: "Times New Roman", Times, serif;
+            color: #2c3e50;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.7);
+        }
+
+        .contact-info {
+            margin-bottom: 2.5rem;
+        }
+        .contact-info h2 {
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-info p svg {
+            fill: #3498db;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Mapa */
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            height: 300px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(44, 62, 80, 0.95);
+                padding: 1rem 0;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .burger-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar" role="navigation" aria-label="Menú principal">
+        <div class="logo">
+            <img src="https://img.freepik.com/vector-premium/logotipo-lujo-sf_786241-5.jpg" alt="Logo SF" style="width:100%; height:auto; object-fit: contain;" />
+        </div>
+        <div class="nav-brand">Misión Trabajo CCS</div>
+        <ul class="nav-links">
+            <li><a href="index2.html">Inicio</a></li>
+            <li><a href="index3.html">Servicios</a></li>
+            <li><a href="index4.html" aria-current="page">Contacto</a></li>
+        </ul>
+        <div class="burger-menu" aria-label="Menú móvil">☰</div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content" role="main">
+        <h1 class="main-title">Contacto</h1>
+
+        <section class="contact-info" aria-label="Información de contacto">
+            <h2>Información</h2>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+               Dirección: Municipio Libertador, Caracas, Venezuela
+            </p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.091 15.091 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.75 20.5 3.5 13.25 3.5 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/></svg>
+               Teléfono: +58 414 356 86 66
+            </p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+               Email: salomonfcarrasco@gmail.com
+            </p>
+        </section>
+
+        <section class="map-container" aria-label="Ubicación en mapa">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31754.732807117712!2d-66.99179769999998!3d10.491921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5825f62c0e7d%3A0xeb61b2b2b373b9a6!2sCaracas%2C%20Distrito%20Capital%2C%20Venezuela!5e0!3m2!1ses!2sus!4v1690797600000!5m2!1ses!2sus" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade" 
+                title="Mapa de Caracas"
+                width="100%"
+                height="300"
+                style="border:0;">
+            </iframe>
+        </section>
+    </main>
+
+    <!-- JavaScript para menú hamburguesa -->
+    <script>
+        const burgerMenu = document.querySelector('.burger-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Control visibilidad título en navbar al hacer scroll
+        const navBrand = document.querySelector('.nav-brand');
+        const mainTitle = document.querySelector('.main-title');
+
+        window.addEventListener('scroll', () => {
+            const titlePosition = mainTitle.getBoundingClientRect().top;
+            if(titlePosition < 0) {
+                navBrand.classList.add('visible');
+            } else {
+                navBrand.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

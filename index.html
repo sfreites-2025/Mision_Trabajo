@@ -1,0 +1,406 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            color: #333;
+            background: url('https://content.r9cdn.net/rimg/dimg/cf/40/a5abdc30-city-990-165a536cfb0.jpg?width=1366&height=768&xhint=1361&yhint=1216&crop=true') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: "Times New Roman", Times, serif;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand.visible {
+            opacity: 1;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .burger-menu {
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            color: white;
+        }
+
+        .main-content {
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 70vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 3.5rem;
+            margin: 0 auto 3rem auto;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .text-container {
+            flex: 2;
+            min-width: 300px;
+            max-width: 60%;
+        }
+
+        .animated-message {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.5rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInLeft 1.5s ease-in-out;
+            line-height: 1.8;
+            text-align: left;
+            font-style: italic;
+            color: #333;
+            border-left: 5px solid #2c3e50;
+            width: 100%;
+        }
+
+        .full-width-text {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1.1rem;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            line-height: 1.6;
+            text-align: justify;
+            color: #333;
+            width: 100%;
+            animation: fadeInLeft 1.5s ease-in-out;
+        }
+
+        .images-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 250px;
+            max-width: 35%;
+        }
+
+        .image-row {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .content-image {
+            flex: 1;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .content-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 3px solid #fff;
+        }
+
+        .stats-image {
+            flex: 1;
+            animation: fadeIn 1.5s ease-in-out;
+            margin-top: 1rem;
+        }
+
+        .stats-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 3px solid #fff;
+        }
+
+        .vision-message {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1rem;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+            line-height: 1.6;
+            text-align: justify;
+            color: #333;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .street-child-image {
+            margin-top: 6rem;
+            animation: fadeInRight 1.5s ease-in-out;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(44, 62, 80, 0.95);
+                padding: 1rem 0;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger-menu {
+                display: block;
+            }
+            
+            .main-title {
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .animated-message, .full-width-text, .vision-message {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .image-row {
+                flex-direction: column;
+            }
+            
+            .text-container, .images-container {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
+            
+            .street-child-image {
+                margin-top: 2rem;
+                margin-bottom: 0;
+            }
+            
+            .stats-image {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://img.freepik.com/vector-premium/logotipo-lujo-sf_786241-5.jpg" alt="Logo SF" style="width:100%; height:auto; object-fit: contain;">
+        </div>
+        <div class="nav-brand">Mision Trabajo CCS</div>
+        <ul class="nav-links">
+            <li><a href="index2.html">Inicio</a></li>
+            <li><a href="index3.html">Servicios</a></li>
+            <li><a href="index4.html">Contacto</a></li>
+        </ul>
+        <div class="burger-menu">☰</div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="main-content">
+        <h1 class="main-title" id="main-title">Mision Trabajo CCS</h1>
+        <div class="content-wrapper">
+            <div class="text-container">
+                <div class="animated-message">
+                    Esta presentación va dirigida a nuestro público, empresas privadas y públicas, entes gubernamentales y más...
+                </div>
+                <div class="content-image" style="margin-top: 2rem;">
+                    <img src="https://www.civilisac.org/civilis/wp-content/uploads/5db0050d3-966x640.jpg" alt="Imagen descriptiva 1">
+                </div>
+                <div class="full-width-text">
+                    <p>En un mundo donde el progreso y la desigualdad a menudo avanzan de la mano, Venezuela —y en especial su capital, Caracas— enfrenta una realidad cruda y persistente: el aumento de la mendicidad en sus calles. Esta problemática no solo refleja las dificultades económicas y sociales del país, sino que también interpela nuestra capacidad colectiva para generar soluciones sostenibles y humanas.</p>
+                    <p>Conscientes de esta urgencia, hay propuesta con un proyecto ambicioso, diseñado para un futuro no tan lejano, donde la colaboración entre sectores se convierte en el pilar fundamental para cambiar realidades. No se trata solo de mitigar temporalmente las necesidades básicas, sino de construir un plan de vida que ofrezca oportunidades genuinas de reinserción social y laboral.</p>
+
+                    <!-- Imagen nueva insertada -->
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <img src="https://www.r4v.info/sites/g/files/tmzbdl2426/files/styles/gallery_image/public/2022-10/Comunicado.png?itok=3JW-aWND" 
+                             alt="Comunicado" 
+                             style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 3px solid #fff;">
+                    </div>
+                </div>
+            </div>
+            <div class="images-container">
+                <div class="content-image street-child-image">
+                    <img src="https://www.civilisac.org/civilis/wp-content/uploads/Nino-situacion-de-calle-pixeladas04-1200x800.jpg" alt="Niño en situación de calle">
+                </div>
+                <div class="stats-image">
+                    <img src="http://cdn.statcdn.com/Infographic/images/normal/32751.jpeg" alt="Estadísticas sobre pobreza">
+                </div>
+                <div class="vision-message">
+                    <p>Nuestra visión trasciende fronteras, aunque el foco inicial está en Venezuela, aspiramos a extender esta iniciativa a otros estados del país y, eventualmente, a naciones que enfrenten desafíos similares. Para lograrlo, es esencial la alianza con empresas comprometidas, organizaciones sociales y actores clave que crean en el poder transformador de la acción conjunta.</p>
+                    <p>Este es más que un proyecto; es un llamado a la empatía, a la innovación social y, sobre todo, a la certeza de que otro futuro es posible. Porque nadie debería vivir en las calles, pero todos merecen una oportunidad para salir de ellas.</p>
+                    <p><strong>¿Estás listo para ser parte del cambio?</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Menú hamburguesa para móviles
+        document.querySelector('.burger-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Cierra el menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Control del título en la barra de navegación
+        const navBrand = document.querySelector('.nav-brand');
+        const mainTitle = document.getElementById('main-title');
+        
+        window.addEventListener('scroll', () => {
+            const titlePosition = mainTitle.getBoundingClientRect().top;
+            
+            if (titlePosition < 0) {
+                navBrand.classList.add('visible');
+            } else {
+                navBrand.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
